@@ -26,7 +26,6 @@ $('a.call_to_action').live('click',function(event){
 
 /* Load page */
 function load_page(page_name){
-    return;
     if(!page_name){
         page_name = $('input#hidden_initial_page').val();
     }
