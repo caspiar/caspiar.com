@@ -34,7 +34,7 @@ $all_pages = array(
   'careers' => array(
     'url' => 'careers',
     'title' => 'Join us for a sprint',
-    'blurb' => '<p>Got talent? Tweet at us:</p><a class="call_to_action" href="http://twitter.com/team_caspiar" target="_blank">@team_caspiar</a><p>If you can&#39;t explain why <br />you&#39;re awesome in less<br />than 140 characters,<br />you don&#39;t belong in<br />marketing.</p>',
+    'blurb' => '<p>Got talent? Tweet at us:</p><a class="call_to_action" href="http://twitter.com/team_caspiar" target="_blank" rel="nofollow">@team_caspiar</a><p>If you can&#39;t explain why <br />you&#39;re awesome in less<br />than 140 characters,<br />you don&#39;t belong in<br />marketing.</p>',
     'headline' => 'Sprint with Us',
     'meta_description' => 'Caspiar is now hiring talented engineers, creative marketers, aggressive sales people, and aspiring interns. Contact us for more information.'
     ),
@@ -47,9 +47,9 @@ $all_pages = array(
     ),
   'ftw' => array(
     'url' => 'ftw',
-    'title' => '#FTW! Our For the Win, For the Week!',
-    'blurb' => '<p>This week, we&#39;d like to<br />shoutout:</p><a class="call_to_action" href="http://lucidchart.com" target="_blank">LucidChart.com</a><p>...for their elegant<br />HTML5 flowcharting tool.<br /><br />Very impressive.</p>',
+    'title' => '#FTW of the week',
+    'blurb' => '<p>This week, we&#39;d like to<br />shoutout:</p><a class="call_to_action" href="http://lucidchart.com" target="_blank" rel="nofollow">LucidChart.com</a><p>...for their elegant<br />HTML5 flowcharting tool.<br /><br />Very impressive.</p>',
     'headline' => '#FTW OF THE WEEK',
-    'meta_description' => 'Every week, we post the most awesome, amazballs, #ftw thing we&#39;ve come across. This weeks winner: LucidChart!'
+    'meta_description' => 'Every week, we post the most awesome, amazballs, #ftw thing we&#39;ve come across.'
     )
 );

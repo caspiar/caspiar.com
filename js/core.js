@@ -83,12 +83,17 @@ function load_page(page_name){
  
 /* Slide background-image of body element, if fails just change css property without animation */
 function slide_body_background(new_background_position_x, callback){
+    var wait_time = 300;
     try{
-        $('body').animate({'background-position-x': new_background_position_x}, 300, 'linear');   
+        $('body').animate({'background-position-x': new_background_position_x}, wait_time, 'linear');   
     } catch(err) {
         $('body').css('background-position-x', new_background_position_x);
+        wait_time = 0;
+    } finally {
+        setTimeout(function(){
+            callback();
+        }, wait_time + 100);
     }
-    callback(true);
 }
  
 /* Load a new page */
