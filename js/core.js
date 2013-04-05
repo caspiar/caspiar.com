@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 /* On page load, load all elements */
+reposition_loading_image();
 load_page();
 
 /* On page resize, call element-resize function */
@@ -25,6 +26,7 @@ $('a.call_to_action').live('click',function(event){
 
 /* Load page */
 function load_page(page_name){
+    return;
     if(!page_name){
         page_name = $('input#hidden_initial_page').val();
     }
@@ -83,17 +85,14 @@ function load_page(page_name){
  
 /* Slide background-image of body element, if fails just change css property without animation */
 function slide_body_background(new_background_position_x, callback){
-    var wait_time = 300;
     try{
-        $('body').animate({'background-position-x': new_background_position_x}, wait_time, 'linear');   
+        $('body').animate({'background-position-x': new_background_position_x}, 300, 'linear', function(){
+            callback();
+        });   
     } catch(err) {
         $('body').css('background-position-x', new_background_position_x);
-        wait_time = 0;
-    } finally {
-        setTimeout(function(){
-            callback();
-        }, wait_time + 100);
-    }
+        callback();
+    } 
 }
  
 /* Load a new page */
@@ -195,6 +194,7 @@ function resize_page_elements(new_banner_height, resize_banner, callback){
     }
     var logo_height = 0.46 * banner_height;
     var logo_padding = 0.333 * banner_height;
+    reposition_loading_image();
     $('img#logo').css('height', logo_height);
     $('img#logo').css('margin-top', logo_padding);
     $('img#logo').css('display', 'block');
@@ -245,6 +245,15 @@ function assign_current_class(){
     // Add highlight to current page's menu-item
     var current_page = $('input#hidden_current_page').val();
     $('#main_menu_'+current_page).addClass('current');
+}
+
+function reposition_loading_image(){
+    var image_width = $('img#loading_icon').width();
+    if(image_width == 0){
+        image_width = 43;
+    }
+    var left_position = ((($(window).width() - image_width) / 2) / $(window).width()) * 100;
+    $('img#loading_icon').css('left', left_position+'%');
 }
 
 
