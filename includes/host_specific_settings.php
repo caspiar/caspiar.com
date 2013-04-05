@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Host switch
+ * Define your host-specific settings here. 
+ * 
+ **/
+
 switch($_SERVER['HTTP_HOST'])
 	{
 	// localhost
