@@ -13,8 +13,8 @@ switch($_SERVER['HTTP_HOST'])
 	case 'localhost' :	
             $site_name = 'Caspiar';
             $site_url = 'caspiar.com';
-            $ws_root = 'http://localhost:8888/caspiar/';
-            $ws_relative_base = '/caspiar/';
+            $ws_root = 'http://localhost:8888/caspiar.com/';
+            $ws_relative_base = '/caspiar.com/';
 	break;
 
 	// caspiar.com

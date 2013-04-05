@@ -81,6 +81,16 @@ function load_page(page_name){
     });
  }
  
+/* Slide background-image of body element, if fails just change css property without animation */
+function slide_body_background(new_background_position_x, callback){
+    try{
+        $('body').animate({'background-position-x': new_background_position_x}, 300, 'linear');   
+    } catch(err) {
+        $('body').css('background-position-x', new_background_position_x);
+    }
+    callback(true);
+}
+ 
 /* Load a new page */
 function load_new_page(page_name){
     get_menu_items(function(menu_items){
@@ -101,7 +111,6 @@ function load_new_page(page_name){
         try{
             history.pushState({page:push_url}, push_url, push_url);
         } catch(err){
-          console.log('Push state failed');
         }
         
         // Hide blurb
@@ -111,7 +120,7 @@ function load_new_page(page_name){
 
         // Slide out out background image
         var new_background_position_x = ($(window).width() + 200) * -1;
-       $('body').animate({'background-position-x': new_background_position_x}, 300, 'linear', function(){
+        slide_body_background(new_background_position_x, function(){
             // Show loading bar
             $('#loading_icon').show();
             
@@ -123,7 +132,7 @@ function load_new_page(page_name){
                 $('body').css('background-image', 'url("'+get_image_url(page.url)+'")');
                 var new_background_position_x = ($(window).width() + 200);
                 $('body').css('background-position-x', new_background_position_x);
-                $('body').animate({'background-position-x': 0}, 300, 'linear', function(){
+                slide_body_background(0, function(){
                     
                     // Change background-position to center
                     $('body').css('background-position', 'center');
@@ -189,6 +198,9 @@ function resize_page_elements(new_banner_height, resize_banner, callback){
     $('#main_menu .element').css('min-height', banner_height / 3);
     $('#main_menu .element').css('top', banner_height * -1);
     $('#main_menu .element .background').css('padding', banner_height/15 + 'px ' + banner_height/5 + 'px');
+    if(ie && ie < 9){
+        $('#main_menu .element .background').css('padding', banner_height/5 + 'px ' + banner_height/15 + 'px');
+    }    
     $('#main_menu .element .background').css('font-size', banner_height / 9.375);
     get_menu_items(function(menu_items){
         var right_increment = banner_height / 3;

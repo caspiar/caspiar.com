@@ -1,0 +1,9 @@
+#main_menu .element{
+    writing-mode: bt-lr;
+    filter: flipv fliph;
+}
+
+#main_menu .element .background{
+
+
+}

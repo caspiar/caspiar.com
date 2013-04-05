@@ -40,10 +40,13 @@ require_once 'includes/determine_initial_page.php';
     <link type="text/css" href="css/style.css" rel="stylesheet" />
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/detect_ie.js"></script>
     <script type="text/javascript" src="js/core.js"></script>
     <script type="text/javascript" src="js/analytics.js"></script>
+
     <!--[if lt IE 9]>
         <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <link type="text/css" href="css/ie.css" rel="stylesheet" />
     <![endif]-->   
 </head>
 <body>
