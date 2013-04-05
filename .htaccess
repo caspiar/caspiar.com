@@ -1,0 +1,25 @@
+#DISABLE DIRECTORY VIEWING
+Options -Indexes
+
+# TURN ON REWRITE-ENGINE
+RewriteEngine on
+
+# REMOVE WWW FROM URLS
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+RewriteCond %{HTTPS} on
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# REWRITE ALL REQUESTS TO THE INDEX FILE
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+
+#SET ERROR DOCUMENTS TO HOMEPAGE
+ErrorDocument 400 /
+ErrorDocument 401 /
+ErrorDocument 403 /
+ErrorDocument 404 /
+ErrorDocument 500 /
