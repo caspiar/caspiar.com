@@ -38,6 +38,8 @@ img#logo{
 }
 
 #main_menu{
+    background-color: transparent;
+    background-color: transparent !important;
 }
 
 #main_menu .element{
@@ -52,9 +54,10 @@ img#logo{
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
-    -ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    /* -ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); */
+    /* filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); */
     display: none;
+    background-color: transparent !important;
 }
 
 #main_menu .element .background{

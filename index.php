@@ -7,6 +7,12 @@
  * 
  **/
 
+/* Turn off caching */
+header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); 
+header("Cache-Control: no-store, no-cache, must-revalidate"); 
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
  
 /* Define web-root of AWS images */
 $img_base = 'https://s3.amazonaws.com/caspiar/img/';
@@ -25,7 +31,7 @@ require_once 'includes/determine_initial_page.php';
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title><?php print $all_pages[$page_chosen]['title'].' | '.$site_name;?></title>
-    <base href="<?php print $ws_root; ?>" target="_self">
+    <base href="<?php print $ws_root; ?>" target="_self" />
     <meta http-equiv="content-language" content="en-us" />
     <meta name="description" content="<?php print $all_pages[$page_chosen]['meta_description']; ?>" />
     <meta name="keywords" content="<?php print $all_pages[$page_chosen]['meta_description']; ?>" />
@@ -35,21 +41,21 @@ require_once 'includes/determine_initial_page.php';
     <meta property="og:description" content="<?php print $all_pages[$page_chosen]['meta_description']; ?>" />
     <meta property="og:site_name" content="<?php print $site_name; ?>" />
     <link type="image/x-icon" rel="shortcut icon"  href="favicon.ico" />  
-    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:500' rel='stylesheet' type='text/css'> 
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:500' rel='stylesheet' type='text/css' /> 
     <link type="text/css" href="css/reset.css" rel="stylesheet" />		
-    <link type="text/css" href="css/style.css" rel="stylesheet" />
+    <link type="text/css" href="css/style.css?randkey=<?php print rand(1,000).time();?>" rel="stylesheet" />
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/detect_ie.js"></script>
-    <script type="text/javascript" src="js/core.js"></script>
+    <script type="text/javascript" src="js/core.js?randkey=<?php print rand(1,000).time();?>"></script>
     <script type="text/javascript" src="js/analytics.js"></script>
 
     <!--[if lt IE 9]>
         <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <link type="text/css" href="css/ie.css" rel="stylesheet" />
+        <link type="text/css" href="css/ie.css?randkey=<?php print rand(1,000).time();?>" rel="stylesheet" />
     <![endif]-->   
 </head>
-<body>
+<body id="body">
     <img id="loading_icon" src="img/loading.gif"  alt="Loading" />
     <div id="banner">
         <img id="logo" src="img/logo.png" alt="Caspiar logo" />

@@ -44,7 +44,7 @@ function load_page(page_name){
     $('#loading_icon').hide();
     
     // Add background image to the body
-    $('body').css('background-image', 'url("'+get_image_url(page.url)+'")');
+    $('#body').css('background-image', 'url("'+get_image_url(page.url)+'")');
     
     // Assign the 'current' class to the active menu item
     assign_current_class();
@@ -83,15 +83,20 @@ function load_page(page_name){
  }
  
 /* Slide background-image of body element, if fails just change css property without animation */
+// This non-traditional try-catch-finally setup was necessary to get the code working in ie8 for some reason. A regular try-catch was failing in that browser.
 function slide_body_background(new_background_position_x, callback){
     try{
-        $('body').animate({'background-position-x': new_background_position_x}, 300, 'linear', function(){
-            callback();
-        });   
+        setTimeout(function(){ 
+            $('#body').css('background-position-x', new_background_position_x);
+        }, 300);
+        $('#body').animate({'background-position-x': new_background_position_x}, 300, 'linear', function(){
+        });
     } catch(err) {
-        $('body').css('background-position-x', new_background_position_x);
-        callback();
-    } 
+    } finally {
+        setTimeout(function(){ 
+            callback();
+        }, 400);        
+    }
 }
  
 /* Load a new page */
@@ -130,15 +135,15 @@ function load_new_page(page_name){
             // Slide new background image in
             page_data_str = $('input#hidden_page_content_'+page_name).val();
             page = $.parseJSON(page_data_str);
-            var image = $('<img style="display: none;" src="'+get_image_url(page.url)+'" />');
+            var image_url = get_image_url(page.url);
+            var image = $('<img style="display: none;" src="'+image_url+'" />');
             image.load(function(){
-                $('body').css('background-image', 'url("'+get_image_url(page.url)+'")');
+                $('#body').css('background-image', 'url("'+image_url+'")');
                 var new_background_position_x = ($(window).width() + 200);
-                $('body').css('background-position-x', new_background_position_x);
-                slide_body_background(0, function(){
-                    
+                $('#body').css('background-position-x', new_background_position_x);
+                slide_body_background(0, function(){                  
                     // Change background-position to center
-                    $('body').css('background-position', 'center');
+                    $('#body').css('background-position', 'center');
 
                     // Hide loading bar
                    $('#loading_icon').hide();
@@ -204,6 +209,7 @@ function resize_page_elements(new_banner_height, resize_banner, callback){
     $('#main_menu .element .background').css('padding', banner_height/15 + 'px ' + banner_height/5 + 'px');
     if(ie && ie < 9){
         $('#main_menu .element .background').css('padding', banner_height/5 + 'px ' + banner_height/15 + 'px');
+        console.log('ie less than ie9');
     }    
     $('#main_menu .element .background').css('font-size', banner_height / 9.375);
     get_menu_items(function(menu_items){
