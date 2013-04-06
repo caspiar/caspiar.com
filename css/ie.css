@@ -5,5 +5,8 @@
 
 #main_menu .element .background{
 
+position: absolute\9; /* IE8 and below */ 
+left: 0\9; /* IE8 and below */
+bottom: 0\9; /* IE8 and below */
 
 }
