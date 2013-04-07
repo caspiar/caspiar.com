@@ -12,17 +12,17 @@
 $all_pages = array(
   'home' => array(
     'url' => 'home',
-    'title' => 'Winning feels awesome. We&#39;ll get you there!',
+    'title' => 'A full service digital marketing agency',
     'blurb' => '<a class="call_to_action" href="about">We&#39;ll get you there.</a>',
     'headline' => '<span class="white">Winning<br />Feels<br />Awesome.</span>',
-    'meta_description' => 'Welcome to Caspiar, a full-service marketing agency in San Francisco. We specialize in web-development, app development, and campaign management. Contact us today to start a conversation.'
+    'meta_description' => 'Welcome to Caspiar, a full-service digital marketing agency in San Francisco. We specialize in web-development, app development, and campaign management. Contact us today to start a conversation.'
     ),
   'about' => array(
     'url' => 'about',
-    'title' => 'A full service marketing agency',
-    'blurb' => '<p>Sites, apps, campaigns.<br />Whatever you need.</p><a class="call_to_action" href="contact">Bring us your ideas.</a>',
-    'headline' => 'Full Service<br />Marketing',
-    'meta_description' => 'If you&#39;ve got a tech idea, Caspiar has a solution. We believe in agile software development, effective campaign managent, and responsive customer service. Whether you need a little advice, or a large team, Caspiar can help.'
+    'title' => 'A startup&#39;s best friend',
+    'blurb' => '<p>Agile development &<br />marketing services <br />to fit any timeline<br />and any budget.</p><a class="call_to_action" href="contact">Bring us your ideas.</a>',
+    'headline' => 'A startup&#39;s<br />best friend',
+    'meta_description' => 'We offer agile development and marketing services for startups and small businesses. Digital solutions to fit any timeline, any budget, and any vertical.'
     ),
   'contact' => array(
     'url' => 'contact',
